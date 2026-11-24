@@ -585,7 +585,6 @@ module.exports = grammar({
           $.if_statement,
           $.switch_statement,
           $.assignment,
-          $.value_parameter_pack,
           $.value_pack_expansion,
           seq($._expression, alias($._immediate_quest, "?"))
         )
@@ -1427,7 +1426,7 @@ module.exports = grammar({
         )
       ),
     value_parameter_pack: ($) =>
-      prec.left(PRECS.parameter_pack, seq("each", $._expression)),
+      prec.left(PRECS.parameter_pack, seq("each", $._primary_expression)),
     value_pack_expansion: ($) =>
       prec.left(PRECS.parameter_pack, seq("repeat", $._expression)),
     availability_condition: ($) =>
