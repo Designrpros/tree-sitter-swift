@@ -34,13 +34,17 @@ test_grammar() {
     dir=$1
     cd "$dir"
     printf 'let b = Binding { 1 } set: { minutes in 2 }\n' > "$dir/multiple.swift"
+    printf 'state = .loaded(())\n' > "$dir/empty.swift"
     printf 'let s = #"value \\#(x)"#\n' > "$dir/raw.swift"
     # shellcheck disable=SC2086
     multiple=$($cli parse "$dir/multiple.swift" 2>/dev/null) || return 1
     # shellcheck disable=SC2086
+    empty=$($cli parse "$dir/empty.swift" 2>/dev/null) || return 1
     raw=$($cli parse "$dir/raw.swift" 2>/dev/null) || return 1
     echo "$multiple" | grep -q ERROR && { echo "multiple trailing closures do not parse" >&2; return 1; }
     [ "$(echo "$multiple" | grep -c 'lambda_literal')" -ge 2 ] || { echo "multiple trailing closures: fewer than two closures" >&2; return 1; }
+    echo "$empty" | grep -qE 'ERROR|MISSING' && { echo "empty tuple argument does not parse" >&2; return 1; }
+    echo "$empty" | grep -q 'tuple_expression' || { echo "empty tuple argument is not a tuple_expression" >&2; return 1; }
     echo "$raw" | grep -q ERROR && { echo "raw-string interpolation does not parse" >&2; return 1; }
     echo "$raw" | grep -q 'raw_str_interpolation' || { echo "raw-string interpolation is not the raw_str_interpolation node" >&2; return 1; }
 }
