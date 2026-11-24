@@ -585,7 +585,6 @@ module.exports = grammar({
           $.if_statement,
           $.switch_statement,
           $.assignment,
-          $.value_parameter_pack,
           $.value_pack_expansion,
           seq($._expression, alias($._immediate_quest, "?"))
         )

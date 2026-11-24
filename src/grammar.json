@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "swift",
   "rules": {
     "source_file": {
@@ -2017,10 +2016,6 @@
           {
             "type": "SYMBOL",
             "name": "assignment"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "value_parameter_pack"
           },
           {
             "type": "SYMBOL",
@@ -12074,6 +12069,5 @@
   "inline": [
     "_locally_permitted_modifiers"
   ],
-  "supertypes": [],
-  "reserved": {}
+  "supertypes": []
 }
