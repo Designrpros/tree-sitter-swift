@@ -2024,10 +2024,6 @@
           },
           {
             "type": "SYMBOL",
-            "name": "value_parameter_pack"
-          },
-          {
-            "type": "SYMBOL",
             "name": "value_pack_expansion"
           },
           {
@@ -6961,7 +6957,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "_expression"
+            "name": "_primary_expression"
           }
         ]
       }

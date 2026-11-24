@@ -624,7 +624,6 @@ module.exports = grammar({
           $.if_statement,
           $.switch_statement,
           $.assignment,
-          $.value_parameter_pack,
           $.value_pack_expansion,
           // Optional chaining (`a?.b`) binds as tightly as the navigation it starts.
           prec(
@@ -1617,7 +1616,7 @@ module.exports = grammar({
         )
       ),
     value_parameter_pack: ($) =>
-      prec.left(PRECS.parameter_pack, seq("each", $._expression)),
+      prec.left(PRECS.parameter_pack, seq("each", $._primary_expression)),
     value_pack_expansion: ($) =>
       prec.left(PRECS.parameter_pack, seq("repeat", $._expression)),
     availability_condition: ($) =>
