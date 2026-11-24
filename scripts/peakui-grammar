@@ -33,7 +33,7 @@ generate() {
 test_grammar() {
     dir=$1
     cd "$dir"
-    printf 'let b = Binding { each } set: { minutes in 2 }\n' > "$dir/multiple.swift"
+    printf 'let b = Binding { 1 } set: { minutes in 2 }\n' > "$dir/multiple.swift"
     printf 'let s = #"value \\#(x)"#\n' > "$dir/raw.swift"
     # shellcheck disable=SC2086
     multiple=$($cli parse "$dir/multiple.swift" 2>/dev/null) || return 1
