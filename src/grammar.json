@@ -3036,6 +3036,18 @@
                 "type": "SEQ",
                 "members": [
                   {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_implicit_semi"
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  },
+                  {
                     "type": "FIELD",
                     "name": "name",
                     "content": {
@@ -3046,6 +3058,18 @@
                   {
                     "type": "STRING",
                     "value": ":"
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_implicit_semi"
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
                   }
                 ]
               },

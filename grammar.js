@@ -837,7 +837,15 @@ module.exports = grammar({
     _constructor_value_arguments: ($) =>
       seq("(", optional(sep1Opt($.value_argument, ",")), ")"),
     _fn_call_lambda_arguments: ($) =>
-      sep1($.lambda_literal, seq(field("name", $.simple_identifier), ":")),
+      sep1(
+        $.lambda_literal,
+        seq(
+          optional($._implicit_semi),
+          field("name", $.simple_identifier),
+          ":",
+          optional($._implicit_semi)
+        )
+      ),
     type_arguments: ($) =>
       prec.left(
         seq("<", sep1Opt(choice($._type, $.integer_literal), ","), ">")
