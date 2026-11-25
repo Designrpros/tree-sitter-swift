@@ -2361,3 +2361,23 @@ let y = copy x
       (simple_identifier))
     (consume_expression
       (simple_identifier))))
+
+================================================================================
+Leading binary operator on a continuation line
+================================================================================
+
+let ms = 5
+    * 60 * 1000
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (property_declaration
+    (value_binding_pattern)
+    (pattern
+      (simple_identifier))
+    (multiplicative_expression
+      (multiplicative_expression
+        (integer_literal)
+        (integer_literal))
+      (integer_literal))))

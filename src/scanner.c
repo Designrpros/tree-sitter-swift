@@ -250,9 +250,9 @@ static bool is_cross_semi_token(enum TokenType op) {
     }
 }
 
-#define NON_CONSUMING_CROSS_SEMI_CHAR_COUNT 8
+#define NON_CONSUMING_CROSS_SEMI_CHAR_COUNT 11
 const uint32_t NON_CONSUMING_CROSS_SEMI_CHARS[NON_CONSUMING_CROSS_SEMI_CHAR_COUNT] = {
-    '?', ':', '{', '&', '|', '^', '<', '>'
+    '?', ':', '{', '&', '|', '^', '<', '>', '*', '/', '%'
 };
 
 /**
